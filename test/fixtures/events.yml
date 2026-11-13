@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  start_date: 2026-11-13 18:37:19
+  end_date: 2026-11-13 18:37:19
+  organisation_id: 1
+  employee_id: 1
+  details: 
+
+two:
+  name: MyString
+  start_date: 2026-11-13 18:37:19
+  end_date: 2026-11-13 18:37:19
+  organisation_id: 1
+  employee_id: 1
+  details: 

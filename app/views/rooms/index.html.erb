@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Rooms" %>
+
+<h1>Rooms</h1>
+
+<div id="rooms">
+  <table class="rooms">
+    <tr>
+      <th><strong>Room ID</strong></th>
+      <th><strong>Name</strong></th>
+      <th><strong>Room Type</strong></th>
+      <th><strong>Building</strong></th>
+      <th><strong>Floor</strong></th>
+      <th><strong>Capacity</strong></th>
+      <th><strong>Link</strong></th>
+    </tr>
+    <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.id %></td>
+      <td><%= room.name %></td>
+      <td><%= link_to room.room_type.name, room_type_path(room.room_type_id) %></td>
+      <td><%= link_to room.building.name, building_path(room.building_id) %></td>
+      <td><%= room.floor %></td>
+      <td><%= room.capacity %></td>
+      <td><%= link_to "Show this room", room %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to "New room", new_room_path %>

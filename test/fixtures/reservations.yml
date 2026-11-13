@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reservation_start: 2026-11-13 18:35:44
+  reservation_end: 2026-11-13 18:35:44
+  room_id: 1
+
+two:
+  reservation_start: 2026-11-13 18:35:44
+  reservation_end: 2026-11-13 18:35:44
+  room_id: 1

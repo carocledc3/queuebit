@@ -1,0 +1,76 @@
+@startuml
+left to right direction
+skinparam ranksep 320
+skinparam nodesep 100
+skinparam DefaultFontName Romeosevka Condensed
+skinparam DefaultFontSize 18
+skinparam classAttributeIconSize 0
+!include catp-colours.pu
+
+header
+== QUEUEBIT Class Diagram
+
+endheader
+
+
+class Event $catpRed {
+int eventID
+string eventName
+Org eventOrganiser
+JSON eventAttributes
+Employee eventOIC
+Reservation[] eventReservations
+datetime eventStartDate
+datetime eventEndDate
+}
+
+class Reservation $catpYellow {
+int reservationID
+Room reservationRoom
+datetime reservationStart
+datetime reservationEnd
+}
+
+class Employee $catpPink {
+    int employeeID
+    string employeeName
+    string employeeDesignation
+    string employeeContact
+    Department employee_department
+}
+
+class Org $catpBlue {
+int orgID
+Department orgDepartment
+string orgName
+}
+
+class Department $catpMauve {
+int departmentID
+string departmentName
+Room departmentHQ
+}
+
+class Room $catpPeach {
+int roomID
+string roomName
+Building roomBuilding
+int roomFloor
+int roomCapacity
+}
+
+class Building $catpGreen {
+int buildingID
+string buildingName
+}
+
+Event "contains"/"1" -u-{ "can belong to"/"*" Reservation
+Event "has"/"*" }--r "oversees"/"1" Employee
+Department "has"/"1" --{ "can belong to"/"*" Employee
+Event "can be organised by" -{ "can organise" Org
+Org "can belong to" }-d "can contain" Department
+Reservation "contains" }- "can be included in" Room
+Room "is located in" }- "contains" Building
+Room "can contain" - "is based in" Department
+
+@enduml

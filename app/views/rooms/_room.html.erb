@@ -1,0 +1,27 @@
+<div id="<%= dom_id room %>">
+  <div>
+    <strong>Name:</strong>
+    <%= room.name %>
+  </div>
+
+  <div>
+    <strong>Floor:</strong>
+    <%= room.floor %>
+  </div>
+
+  <div>
+    <strong>Capacity:</strong>
+    <%= room.capacity %>
+  </div>
+
+  <div>
+    <strong>Building:</strong>
+    <%= link_to room.building.name, building_path(room.building_id) %>
+  </div>
+
+  <div>
+    <strong>Room Type:</strong>
+    <%= link_to room.room_type.name, room_type_path(room.room_type_id) %>
+  </div>
+
+</div>

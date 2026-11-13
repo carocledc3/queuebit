@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<h1><%= @building.name %></h1>
+
+<%= render @building %>
+
+<% @building.rooms.each do |room| %>
+<li><%= link_to room.name, room_path(room.id) %></li>
+<% end %>
+
+<div>
+  <%= link_to "Edit this building", edit_building_path(@building) %> |
+  <%= link_to "Back to buildings", buildings_path %>
+
+  <%= button_to "Destroy this building", @building, method: :delete %>
+</div>

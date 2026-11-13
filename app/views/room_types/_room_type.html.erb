@@ -1,0 +1,16 @@
+<div id="<%= dom_id room_type %>">
+  <h2><%= room_type.name %></h2>
+  <% if room_type.rooms.length() > 0%>
+  <div>
+        <strong>Rooms of this type:</strong>
+    <ul>
+      <% room_type.rooms.each do |room| %>
+      <li><%= link_to room.name, room_path(room.id)%></li>
+      <% end %>
+    </ul>
+      </li>
+
+  </div>
+  <% end %>
+
+</div>
