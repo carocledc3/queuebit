@@ -1,31 +1,47 @@
+
 <%= form_with(model: reservation) do |form| %>
+
   <% if reservation.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
-
-      <ul>
         <% reservation.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+          <p><%= error.message %></p>
         <% end %>
-      </ul>
     </div>
   <% end %>
+<div class="testform">
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :reservation_date, style: "display: block" %>
+    <%= form.date_field :reservation_date %>
+  </div>
 
   <div>
     <%= form.label :reservation_start, style: "display: block" %>
-    <%= form.datetime_field :reservation_start %>
+    <%= form.time_field :reservation_start %>
   </div>
 
   <div>
     <%= form.label :reservation_end, style: "display: block" %>
-    <%= form.datetime_field :reservation_end %>
+    <%= form.time_field :reservation_end %>
   </div>
 
   <div>
     <%= form.label :room_id, style: "display: block" %>
-    <%= form.number_field :room_id %>
+    <%= form.collection_select :room_id, Room.where.not(room_type_id: 16).or(Room.where.not(room_type_id: 15)), :id, :name %>
   </div>
 
+  <div>
+    <%= form.label :event_id, style: "display: block" %>
+    <%= form.collection_select :event_id, Event.all, :id, :name %>
+  </div>
+
+  
+  </div>
+  
   <div>
     <%= form.submit %>
   </div>

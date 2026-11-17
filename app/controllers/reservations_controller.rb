@@ -27,6 +27,11 @@ class ReservationsController < ApplicationController
       if @reservation.save
         format.html { redirect_to @reservation, notice: "Reservation was successfully created." }
         format.json { render :show, status: :created, location: @reservation }
+        # Debug content
+        puts "------ RESERVATION CREATED FOR #{@reservation.room.name} ------"
+        puts "------ RESERVATION EVENT: #{@reservation.event.name} ------"
+        puts "------ RESERVATION START: #{@reservation.reservation_start} ------"
+        puts "------ RESERVATION END: #{@reservation.reservation_end} ------"
       else
         format.html { render :new, status: :unprocessable_content }
         format.json { render json: @reservation.errors, status: :unprocessable_content }
@@ -57,6 +62,8 @@ class ReservationsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
@@ -65,6 +72,6 @@ class ReservationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reservation_params
-      params.expect(reservation: [ :reservation_start, :reservation_end, :room_id ])
+      params.expect(reservation: [ :name, :reservation_date, :reservation_start, :reservation_end, :room_id, :event_id ])
     end
 end

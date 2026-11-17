@@ -17,8 +17,18 @@
   </div>
 
   <div>
+    <%= form.label :abbreviation, style: "display: block" %>
+    <%= form.text_field :abbreviation %>
+  </div>
+
+  <div>
+    <%= form.label :colour, style: "display: block" %>
+    <%= form.color_field :colour %>
+  </div>
+
+  <div>
     <%= form.label :department_id, style: "display: block" %>
-    <%= form.number_field :department_id %>
+    <%= form.collection_select :department_id, Department.all, :id, :name, :prompt => "None" %>
   </div>
 
   <div>

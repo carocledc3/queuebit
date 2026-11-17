@@ -1,12 +1,23 @@
+<style>
+  :root{
+    --deptcol: <%= department.colour %> !important;
+  }
+</style>
+
 <div id="<%= dom_id department %>">
   <div>
     <strong>Name:</strong>
-    <%= department.name %>
+    <%= department.name %> <i>(<%= department.abbreviation %>)</i>
   </div>
 
   <div>
-    <strong>Room:</strong>
-    <%= department.room_id %>
+    <strong>Office:</strong>
+    <%= link_to department.room.name, room_path(department.room_id) %>
+  </div>
+
+  <div>
+    <strong>Colour:</strong>
+    <span style="width: 30px; height: 30px; background-color: <%= department.colour %>">    </span>
   </div>
 
 </div>

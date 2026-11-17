@@ -39,6 +39,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       if @event.update(event_params)
         format.html { redirect_to @event, notice: "Event was successfully updated.", status: :see_other }
+        puts "EVENT UPDATED"
         format.json { render :show, status: :ok, location: @event }
       else
         format.html { render :edit, status: :unprocessable_content }
@@ -65,6 +66,7 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.expect(event: [ :name, :start_date, :end_date, :organisation_id, :employee_id, :details ])
+      # params.expect(event: [ :name, :start_date, :end_date, :organisation_id, :employee_id, :details, :event_type_id, :description, reservations_attributes: [ :id, :_destroy, :name, :reservation_date, :reservation_start, :reservation_end, :room_id ]] )
+      params.require(:event).permit(:name, :start_date, :end_date, :organisation_id, :sarf, :employee_id, :details, :event_type_id, :description, reservations_attributes: [ :id, :_destroy, :name, :reservation_date, :reservation_start, :reservation_end, :room_id ])
     end
 end

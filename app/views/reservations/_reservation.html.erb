@@ -1,4 +1,9 @@
 <div id="<%= dom_id reservation %>">
+
+  <div>
+    <strong>Reservation name:</strong>
+    <%= reservation.name %>
+  </div>
   <div>
     <strong>Reservation start:</strong>
     <%= reservation.reservation_start %>
@@ -11,7 +16,7 @@
 
   <div>
     <strong>Room:</strong>
-    <%= reservation.room_id %>
+    <%= link_to reservation.room.name, rooms_path(reservation.room_id) %>
   </div>
 
 </div>

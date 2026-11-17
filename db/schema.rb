@@ -10,7 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_13_170606) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_15_212343) do
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
   create_table "buildings", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -22,6 +60,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_170606) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "room_id", null: false
+    t.string "abbreviation"
+    t.string "colour"
+    t.text "description"
     t.index ["room_id"], name: "index_departments_on_room_id"
   end
 
@@ -35,6 +76,12 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_170606) do
     t.index ["department_id"], name: "index_employees_on_department_id"
   end
 
+  create_table "event_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.datetime "start_date"
@@ -44,7 +91,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_170606) do
     t.datetime "updated_at", null: false
     t.integer "employee_id", null: false
     t.integer "organisation_id", null: false
+    t.integer "event_type_id", null: false
+    t.text "description"
     t.index ["employee_id"], name: "index_events_on_employee_id"
+    t.index ["event_type_id"], name: "index_events_on_event_type_id"
     t.index ["organisation_id"], name: "index_events_on_organisation_id"
   end
 
@@ -52,18 +102,22 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_170606) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "department_id", null: false
+    t.integer "department_id"
     t.string "abbreviation"
+    t.string "colour"
+    t.text "description"
     t.index ["department_id"], name: "index_organisations_on_department_id"
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "reservation_start"
-    t.datetime "reservation_end"
+    t.time "reservation_start"
+    t.time "reservation_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id", null: false
     t.integer "room_id", null: false
+    t.string "name"
+    t.date "reservation_date"
     t.index ["event_id"], name: "index_reservations_on_event_id"
     t.index ["room_id"], name: "index_reservations_on_room_id"
   end
@@ -86,6 +140,25 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_170606) do
     t.index ["room_type_id"], name: "index_rooms_on_room_type_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "ip_address"
+    t.string "user_agent"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email_address", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
+  end
+
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "departments", "rooms"
   add_foreign_key "employees", "departments"
   add_foreign_key "events", "employees"
@@ -95,4 +168,5 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_13_170606) do
   add_foreign_key "reservations", "rooms"
   add_foreign_key "rooms", "buildings"
   add_foreign_key "rooms", "room_types"
+  add_foreign_key "sessions", "users"
 end

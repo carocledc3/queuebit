@@ -1,4 +1,11 @@
 <div id="<%= dom_id employee %>">
+
+  <h2><%= employee.name %></h2>
+  <div>
+    <strong>ID:</strong>
+    <%= employee.id %>
+  </div>
+
   <div>
     <strong>Name:</strong>
     <%= employee.name %>
@@ -15,8 +22,8 @@
   </div>
 
   <div>
-    <strong>Deparment:</strong>
-    <%= employee.deparment_id %>
+    <strong>Department:</strong>
+    <%= link_to employee.department.name, department_path(employee.department_id) %>
   </div>
 
 </div>

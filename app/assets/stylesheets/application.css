@@ -1,8 +1,4 @@
 /*
-*= require material_icons
-*/
-
-/*
  * This is a manifest file that'll be compiled into application.css.
  *
  * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
@@ -20,4 +16,12 @@
     'wght' 700,
     'GRAD' 0,
     'opsz' 24
+}
+
+.testform {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0px;
 }

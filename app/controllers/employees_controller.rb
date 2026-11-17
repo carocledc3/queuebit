@@ -65,6 +65,6 @@ class EmployeesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def employee_params
-      params.expect(employee: [ :name, :designation, :contact, :deparment_id ])
+      params.expect(employee: [ :name, :designation, :contact, :department_id ])
     end
 end

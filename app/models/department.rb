@@ -1,5 +1,5 @@
 class Department < ApplicationRecord
-  has_one :room
+  belongs_to :room
   has_many :employees, dependent: :destroy
-  has_many :organisations, dependent: :destroy
+  has_many :organisations
 end

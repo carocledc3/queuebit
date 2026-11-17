@@ -27,8 +27,8 @@
   </div>
 
   <div>
-    <%= form.label :deparment_id, style: "display: block" %>
-    <%= form.number_field :deparment_id %>
+    <%= form.label :department_id, style: "display: block" %>
+    <%= form.collection_select :department_id, Department.all, :id, :name, :prompt => "None" %>
   </div>
 
   <div>

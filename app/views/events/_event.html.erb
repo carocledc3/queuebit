@@ -16,17 +16,35 @@
 
   <div>
     <strong>Organisation:</strong>
-    <%= event.organisation_id %>
+    <%= link_to event.organisation.abbreviation, organisations_path(event.organisation_id) %>
   </div>
 
   <div>
     <strong>Employee:</strong>
-    <%= event.employee_id %>
+    <%= link_to event.employee.name, employees_path(event.employee_id) %>
   </div>
 
   <div>
     <strong>Details:</strong>
     <%= event.details %>
+  </div>
+
+  <div>
+    <strong>Description:</strong>
+    <%= event.description %>
+  </div>
+
+  <div>
+    <% unless event.reservations.nil? %>
+      <strong>Reservations:</strong>
+      <ul>
+        <% event.reservations.each do |resv| %>
+          <li><%= resv.room.name %> from <%= resv.reservation_start %></li>
+        <% end %>
+      </ul>
+    
+    <% end %>
+    
   </div>
 
 </div>

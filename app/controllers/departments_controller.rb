@@ -39,6 +39,7 @@ class DepartmentsController < ApplicationController
     respond_to do |format|
       if @department.update(department_params)
         format.html { redirect_to @department, notice: "Department was successfully updated.", status: :see_other }
+        puts "HELLO WORLD"
         format.json { render :show, status: :ok, location: @department }
       else
         format.html { render :edit, status: :unprocessable_content }
@@ -65,6 +66,6 @@ class DepartmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def department_params
-      params.expect(department: [ :name, :room_id ])
+      params.expect(department: [ :name, :room_id, :abbreviation, :description, :colour ])
     end
 end

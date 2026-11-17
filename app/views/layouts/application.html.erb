@@ -24,6 +24,17 @@
   </head>
 
   <body>
+    <nav>
+      <% unless current_page?(root_path) %>
+        <%= link_to "Back to Home", root_path %>
+      <% end %>
+      <% unless (authenticated? or current_page?(new_session_path)) %>
+        <%= button_to "Login", new_session_path, method: :get  %>
+      <% end %>
+      
+      <%= button_to "Log out", session_path, method: :delete if authenticated? %>
+    </nav>
     <%= yield %>
+    
   </body>
 </html>

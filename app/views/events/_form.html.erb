@@ -1,4 +1,4 @@
-<%= form_with(model: event) do |form| %>
+<%= form_with model: event do |form| %>
   <% if event.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -17,29 +17,53 @@
   </div>
 
   <div>
+    <%= form.label "Event Type", style: "display: block" %>
+    <%= form.collection_select :event_type_id, EventType.all, :id, :name %>
+  </div>
+
+  <div>
     <%= form.label :start_date, style: "display: block" %>
-    <%= form.datetime_field :start_date %>
+    <%= form.date_field :start_date %>
   </div>
 
   <div>
     <%= form.label :end_date, style: "display: block" %>
-    <%= form.datetime_field :end_date %>
+    <%= form.date_field :end_date %>
   </div>
 
   <div>
     <%= form.label "Organiser", style: "display: block" %>
-    <%= form.number_field :organisation_id %>
+    <%= form.collection_select :organisation_id, Organisation.all, :id, :name %>
   </div>
 
   <div>
     <%= form.label "Employee In-Charge of Event", style: "display: block" %>
-    <%= form.number_field :employee_id %>
+    <%= form.collection_select :employee_id, Employee.all, :id, :name %>
   </div>
 
   <div>
     <%= form.label :details, style: "display: block" %>
-    <%= form.text_field :details %>
+    <%= form.file_field :details %>
   </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.textarea :description %>
+  </div>
+
+    <div>
+    <%= form.label :sarf, "Upload SARF", style: "display: block" %>
+    <%= form.file_field :sarf, accept: "application/pdf*" %>
+  </div>
+
+  <%# NESTED FORM BELOW %>
+  <%= cocooned_container do %>
+    <%= form.fields_for :reservations do |resv_form| %>
+      <%= render "reservation_fields", f: resv_form %>
+    <% end %>
+    <%= cocooned_add_item_button 'Add a reservation', form, :reservations %>
+  <% end %>
+<%# END NESTED FORM %>
 
   <div>
     <%= form.submit %>

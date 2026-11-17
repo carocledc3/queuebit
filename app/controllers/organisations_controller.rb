@@ -65,6 +65,6 @@ class OrganisationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def organisation_params
-      params.expect(organisation: [ :name, :department_id ])
+      params.expect(organisation: [ :name, :department_id, :abbreviation, :description, :colour ])
     end
 end

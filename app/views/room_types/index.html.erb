@@ -5,12 +5,23 @@
 <h1>Room types</h1>
 
 <div id="room_types">
+  <table>
+    <tr>
+      <th>Room Name</th>
+      <th>Rooms of this type</th>
+    </tr>
   <% @room_types.each do |room_type| %>
-    <%= render room_type %>
-    <p>
-      <%= link_to "Show this room type", room_type %>
-    </p>
+  <tr>
+    <td><%= link_to room_type.name, room_type %></td>
+    <td><% room_type.rooms.each do |room| %>
+          <%= link_to room.name, room_path(room.id) %><% unless room == room_type.rooms.last%>,<% end %>
+      <% end %>
+    </td>
+  </tr>
+    
   <% end %>
+  </table>
+  
 </div>
 
 <%= link_to "New room type", new_room_type_path %>

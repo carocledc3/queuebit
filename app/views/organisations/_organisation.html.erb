@@ -1,12 +1,14 @@
 <div id="<%= dom_id organisation %>">
   <div>
     <strong>Name:</strong>
-    <%= organisation.name %>
+    <%= organisation.name %> <i>(<%= organisation.abbreviation %>)</i>
   </div>
 
+<% unless organisation.department_id.nil? %>
   <div>
     <strong>Department:</strong>
-    <%= organisation.department_id %>
+    <%= link_to Department.find(organisation.department_id).abbreviation, department_path(organisation.department_id) %>
   </div>
+<% end %>
 
 </div>

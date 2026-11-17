@@ -5,7 +5,7 @@
         <strong>Rooms of this type:</strong>
     <ul>
       <% room_type.rooms.each do |room| %>
-      <li><%= link_to room.name, room_path(room.id)%></li>
+      <%= link_to room.name, room_path(room.id)%>,
       <% end %>
     </ul>
       </li>

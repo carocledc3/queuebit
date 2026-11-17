@@ -17,9 +17,21 @@
   </div>
 
   <div>
-    <%= form.label :room_id, style: "display: block" %>
-    <%= form.number_field :room_id %>
+    <%= form.label :abbreviation, style: "display: block" %>
+    <%= form.text_field :abbreviation %>
   </div>
+
+  <div>
+    <%= form.label :colour, style: "display: block" %>
+    <%= form.color_field :colour %>
+  </div>
+
+  <div>
+    <%= form.label :room_id, style: "display: block" %>
+    <%= form.collection_select :room_id, Room.where(room_type_id: 15), :id, :name %>
+  </div>
+
+  
 
   <div>
     <%= form.submit %>

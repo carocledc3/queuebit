@@ -4,10 +4,10 @@ one:
   name: MyString
   designation: MyString
   contact: MyString
-  deparment_id: 1
+  department_id: 1
 
 two:
   name: MyString
   designation: MyString
   contact: MyString
-  deparment_id: 1
+  department_id: 1

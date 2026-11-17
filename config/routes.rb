@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resource :session
+  resources :passwords, param: :token
+  resources :event_types
   resources :room_types
   resources :events
   resources :reservations
@@ -19,4 +22,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
+  get "/login" => "sessions#new"
 end
