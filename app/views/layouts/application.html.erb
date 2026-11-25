@@ -6,8 +6,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Queuebit">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta charset="UTF-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
 
     <%= yield :head %>
 
@@ -24,17 +26,11 @@
   </head>
 
   <body>
-    <nav>
-      <% unless current_page?(root_path) %>
-        <%= link_to "Back to Home", root_path %>
-      <% end %>
-      <% unless (authenticated? or current_page?(new_session_path)) %>
-        <%= button_to "Login", new_session_path, method: :get  %>
-      <% end %>
-      
-      <%= button_to "Log out", session_path, method: :delete if authenticated? %>
-    </nav>
+<%# link_to "Back to Home", root_path %> 
+<%#= button_to "Login", new_session_path, method: :get, class: "btn btn-accent"%> 
+<%# button_to "Log out", session_path, method: :delete if authenticated? %>
     <%= yield %>
+
     
   </body>
 </html>

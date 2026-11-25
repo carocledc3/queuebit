@@ -1,0 +1,3 @@
+<div class="<%= option_class %>">
+<%= link_to (picture_tag(:class => "wordmark inline-block") {tag(:source, :srcset => image_path("queuebit-wordmark-dark.svg"), :media => "(prefers-color-scheme: light)") + tag(:source, :srcset => image_path("queuebit-wordmark-light.svg"), :media => "(prefers-color-scheme: dark)") + image_tag("queuebit-wordmark-dark.svg", :alt => "QUEUEBIT Logo")}), root_path %>
+</div>

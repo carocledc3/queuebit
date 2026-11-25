@@ -1,0 +1,13 @@
+<%= render template: 'layouts/inside' %>
+<a href="/buildings"><button class="btn btn-neutral"><span class="material-symbols-outlined">apartment</span> Buildings</button></a>
+<a href="/departments"><button class="btn btn-neutral"><span class="material-symbols-outlined">business_center</span> Departments</button></a>
+<a href="/employees"><button class="btn btn-neutral"><span class="material-symbols-outlined">person_apron</span> Employees</button></a>
+<a href="/event_types"><button class="btn btn-neutral"><span class="material-symbols-outlined">event_seat</span> Event Types</button></a>
+<a href="/events"><button class="btn btn-neutral"><span class="material-symbols-outlined">event</span> Events</button></a>
+<a href="/organisations"><button class="btn btn-neutral"><span class="material-symbols-outlined">family_group</span> Organisations</button></a>
+<a href="/reservations"><button class="btn btn-neutral"><span class="material-symbols-outlined">confirmation_number</span> Reservations</button></a>
+<a href="/room_types"><button class="btn btn-neutral"><span class="material-symbols-outlined">room_preferences</span> Room Types</button></a>
+<a href="/rooms"><button class="btn btn-neutral"><span class="material-symbols-outlined">meeting_room</span> Rooms</button></a>
+<%# button_to "Log out", session_path, method: :delete if authenticated?, {class: "btn btn-accent"}%>
+<%= button_to "Log out", logout_path, method: :get, class: "btn btn-accent" %>
+

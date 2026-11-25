@@ -67,6 +67,6 @@ class EventsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def event_params
       # params.expect(event: [ :name, :start_date, :end_date, :organisation_id, :employee_id, :details, :event_type_id, :description, reservations_attributes: [ :id, :_destroy, :name, :reservation_date, :reservation_start, :reservation_end, :room_id ]] )
-      params.require(:event).permit(:name, :start_date, :end_date, :organisation_id, :sarf, :employee_id, :details, :event_type_id, :description, reservations_attributes: [ :id, :_destroy, :name, :reservation_date, :reservation_start, :reservation_end, :room_id ])
+      params.require(:event).permit(:name, :start_date, :end_date, :organisation_id, :sarf, :employee_id, :details, :event_type_id, :description, reservations_attributes: [ :id, :_destroy, :name, :reservation_start, :reservation_end, :room_id ])
     end
 end

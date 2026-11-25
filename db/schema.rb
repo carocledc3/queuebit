@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_15_212343) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_24_174133) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -110,14 +110,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_15_212343) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.time "reservation_start"
-    t.time "reservation_end"
+    t.datetime "reservation_start"
+    t.datetime "reservation_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id", null: false
     t.integer "room_id", null: false
     t.string "name"
-    t.date "reservation_date"
     t.index ["event_id"], name: "index_reservations_on_event_id"
     t.index ["room_id"], name: "index_reservations_on_room_id"
   end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "images/index"
   resource :session
   resources :passwords, param: :token
   resources :event_types
@@ -22,5 +23,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#home"
-  get "/login" => "sessions#new"
+  get "login" => "sessions#new"
+  get "analytics" => "pages#analytics", as: :analytics
+  get "about" => "pages#about", as: :aboot
+  get "sarf_help" => "pages#sarf_help", as: :sarf
+  get "admin_dash" => "pages#admin_dash", as: :dashboard
+  get "records_dash" => "pages#records_dash", as: :records
+  get "exit", to: "sessions#destroy", as: :logout
 end

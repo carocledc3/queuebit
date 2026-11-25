@@ -1,0 +1,11 @@
+<div class="navcont">
+    <nav class="navcont" id="public-nav">
+        <div class="wordmarkcont">
+            <%= render partial: "layouts/wordmark", locals: {option_class: "w-30"} %>
+        </div>
+        <%= link_to "UC Main Page", "https://uc-bcf.edu.ph", class: "navlink" %>
+        <%= link_to "About Queuebit", :aboot, class: "navlink" %>
+        <%= link_to "SARF Process Help", :sarf, class: "navlink" %>
+        <%= button_to "Login", new_session_path, method: :get, class: "login-button"%> 
+    </nav>
+</div>

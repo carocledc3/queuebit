@@ -6,18 +6,13 @@
       </div>
 
       <div>
-        <%= f.label :reservation_date, style: "display: block" %>
-        <%= f.date_field :reservation_date %>
-      </div>
-
-      <div>
         <%= f.label :reservation_start, style: "display: block" %>
-        <%= f.time_field :reservation_start %>
+        <%= f.datetime_field :reservation_start %>
       </div>
 
       <div>
         <%= f.label :reservation_end, style: "display: block" %>
-        <%= f.time_field :reservation_end %>
+        <%= f.datetime_field :reservation_end %>
       </div>
 
       <div>

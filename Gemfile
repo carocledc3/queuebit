@@ -70,4 +70,5 @@ gem "smarter_csv"
 gem "material_icons"
 gem "simple_calendar"
 gem "cocooned"
-gem 'jquery-rails'
+gem "jquery-rails"
+gem "tailwindcss-rails", "~> 4.7"

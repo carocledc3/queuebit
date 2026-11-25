@@ -14,19 +14,15 @@
     <%= form.text_field :name %>
   </div>
 
-  <div>
-    <%= form.label :reservation_date, style: "display: block" %>
-    <%= form.date_field :reservation_date %>
-  </div>
 
   <div>
     <%= form.label :reservation_start, style: "display: block" %>
-    <%= form.time_field :reservation_start %>
+    <%= form.datetime_field :reservation_start %>
   </div>
 
   <div>
     <%= form.label :reservation_end, style: "display: block" %>
-    <%= form.time_field :reservation_end %>
+    <%= form.datetime_field :reservation_end %>
   </div>
 
   <div>

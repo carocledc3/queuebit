@@ -1,9 +1,37 @@
-<a href="/buildings"><button><span class="material-symbols-outlined">apartment</span> Buildings</button></a>
-<a href="/departments"><button><span class="material-symbols-outlined">business_center</span> Departments</button></a>
-<a href="/employees"><button><span class="material-symbols-outlined">person_apron</span> Employees</button></a>
-<a href="/event_types"><button><span class="material-symbols-outlined">event_seat</span> Event Types</button></a>
-<a href="/events"><button><span class="material-symbols-outlined">event</span> Events</button></a>
-<a href="/organisations"><button><span class="material-symbols-outlined">family_group</span> Organisations</button></a>
-<a href="/reservations"><button><span class="material-symbols-outlined">confirmation_number</span> Reservations</button></a>
-<a href="/room_types"><button><span class="material-symbols-outlined">room_preferences</span> Room Types</button></a>
-<a href="/rooms"><button><span class="material-symbols-outlined">meeting_room</span> Rooms</button></a>
+<%= render template: "layouts/outside" %>
+<div class="w-2/3 flex flex-col justify-center items-center h-full mx-auto gap-2">
+    <div class="home-content">
+    <div class="room-changer">
+        <%= form_with(model: Room, id: "room_selector") do |form| %>
+        <%= form.label "Room", style: "display: block", class: "label" %>
+        <div class="select">
+            <%= form.collection_select "selected_id", Room.where.not(room_type_id: 16).or(Room.where.not(room_type_id: 15)), :id, :name, :onChange => tabarnak%>
+        </div>
+
+        <%= form.label "Organisation", style: "display: block", class: "label" %>
+        <div class="select">
+            <%= form.collection_select "organisation_id", Organisation.all, :id, :name, :onChange => tabarnak%>
+        </div>
+    <% end %>
+    </div>
+    <div class="calendar-view">
+        <%= turbo_frame_tag 'calendar' do %>
+                <%= week_calendar(events: @resv_list) do |date, resvs| %>
+                <div class="day">
+                    <%= date.to_fs(:short) %>
+                </div>
+                <% resvs.each do |resv| %>
+                    <div>
+                        <%= resv.event.name %> 
+                        <%= resv.reservation_start.to_fs(:time) %>
+                    </div>
+                <% end %>
+            <% end %>
+        <% end %>
+        
+    </div>
+</div>
+</div>
+
+
+

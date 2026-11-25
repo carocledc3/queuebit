@@ -1,8 +1,16 @@
-<h1>Forgot your password?</h1>
+<div class="new-password-page">
+  <div class="new-password-page-body">
 
-<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
-
+<%= tag.div(flash[:alert], class: "text-error") if flash[:alert] %>
+<div class="formcont">
+    <h1>Forgot your password?</h1>
 <%= form_with url: passwords_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.submit "Email reset instructions" %>
+    <%= form.label :email_address, "E-mail address of your account", class: "label" %>
+  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", class: "login-pass", value: params[:email_address] %><br>
+  <%= form.submit "Email reset instructions", class: "btn btn-accent" %>
 <% end %>
+  <%= button_to "Back to Login", new_session_path, method: :get, class: "btn btn-neutral" %>
+</div>
+
+</div>
+</div>

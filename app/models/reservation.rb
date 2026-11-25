@@ -2,8 +2,9 @@ class NoConflicts < ActiveModel::Validator
   def validate(record)
       unless record.room.reservations.empty?
         record.room.reservations.each do |rt|
-        if rt.end_datetime > record.start_datetime or rt.start_datetime < record.end_datetime
-            record.errors.add(:reservation_start, message: "Reservation conflicts with #{rt.event.name}")
+        if record == rt; break; end
+        if rt.reservation_end > record.reservation_start or rt.reservation_start < record.reservation_end
+            record.errors.add(:reservation_start, message: "Reservation conflicts with reservation of #{rt.event.name}")
             break
         end
         end
@@ -20,20 +21,4 @@ class Reservation < ApplicationRecord
 
   def start_time; self.reservation_start; end
   def end_time; self.reservation_end; end
-
-  def start_datetime
-    tx = self.reservation_start
-    dx = self.reservation_date
-    Time.new(
-      dx.year, dx.month, dx.day, tx.hour, tx.min, tx.sec
-    )
-  end
-
-  def end_datetime
-    tx = self.reservation_end
-    dx = self.reservation_date
-    Time.new(
-      dx.year, dx.month, dx.day, tx.hour, tx.min, tx.sec
-    )
-  end
 end

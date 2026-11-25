@@ -39,7 +39,7 @@
       <strong>Reservations:</strong>
       <ul>
         <% event.reservations.each do |resv| %>
-          <li><%= resv.room.name %> from <%= resv.reservation_start %></li>
+          <li><%= resv.room.name %> from <%= resv.reservation_start %> to <%= resv.reservation_end %></li>
         <% end %>
       </ul>
     

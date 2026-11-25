@@ -1,0 +1,165 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@source not "./daisyui{,*}.mjs";
+
+* {
+    font-family: "JetBrains Mono", monospace, system-ui !important;
+}
+
+.material-symbols-outlined {
+    font-family: "Material Symbols Outlined Filled", "Material Symbols Outlined" !important;
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 700,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+@plugin "./daisyui.mjs" {
+    themes: qbit --default, qbit-dark --prefersdark;
+}
+
+/* Optional for custom themes – Docs: https://daisyui.com/docs/themes/#how-to-add-a-new-custom-theme */
+@plugin "./daisyui-theme.mjs" {
+    name: "qbit";
+    default: true;
+    prefersdark: false;
+    color-scheme: "light";
+    --color-base-100: oklch(98% 0.019 200.873);
+    --color-base-200: oklch(95% 0.026 236.824);
+    --color-base-300: oklch(88% 0.059 254.128);
+    --color-base-content: oklch(35% 0.144 278.697);
+    --color-primary: oklch(62% 0.214 259.815);
+    --color-primary-content: oklch(97% 0.013 236.62);
+    --color-secondary: oklch(68% 0.169 237.323);
+    --color-secondary-content: oklch(98% 0.019 200.873);
+    --color-accent: oklch(62% 0.214 259.815);
+    --color-accent-content: oklch(97% 0.013 236.62);
+    --color-neutral: oklch(28% 0.091 267.935);
+    --color-neutral-content: oklch(97% 0.021 166.113);
+    --color-info: oklch(74% 0.16 232.661);
+    --color-info-content: oklch(28% 0.091 267.935);
+    --color-success: oklch(62% 0.194 149.214);
+    --color-success-content: oklch(96% 0.067 122.328);
+    --color-warning: oklch(76% 0.188 70.08);
+    --color-warning-content: oklch(27% 0.077 45.635);
+    --color-error: oklch(58% 0.253 17.585);
+    --color-error-content: oklch(97% 0.013 17.38);
+    --radius-selector: 0.25rem;
+    --radius-field: 0.25rem;
+    --radius-box: 0.25rem;
+    --size-selector: 0.1875rem;
+    --size-field: 0.1875rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 1;
+}
+
+
+@plugin "./daisyui-theme.mjs" {
+    name: "qbit-dark";
+    default: false;
+    prefersdark: true;
+    color-scheme: "dark";
+    --color-base-100: oklch(28% 0.070 267.935);
+    --color-base-200: oklch(22.1% 0.062 267.935);
+    --color-base-300: oklch(14.7% 0.064 267.935);
+    --color-base-content: oklch(95% 0.026 236.824);
+    --color-primary: oklch(54% 0.245 262.881);
+    --color-primary-content: oklch(97% 0.013 236.62);
+    --color-secondary: oklch(58% 0.158 241.966);
+    --color-secondary-content: oklch(98% 0.019 200.873);
+    --color-accent: oklch(54% 0.245 262.881);
+    --color-accent-content: oklch(97% 0.013 236.62);
+    --color-neutral: oklch(97% 0.014 254.604);
+    --color-neutral-content: oklch(28% 0.091 267.935);
+    --color-info: oklch(74% 0.16 232.661);
+    --color-info-content: oklch(28% 0.091 267.935);
+    --color-success: oklch(62% 0.194 149.214);
+    --color-success-content: oklch(96% 0.067 122.328);
+    --color-warning: oklch(76% 0.188 70.08);
+    --color-warning-content: oklch(27% 0.077 45.635);
+    --color-error: oklch(58% 0.253 17.585);
+    --color-error-content: oklch(97% 0.013 17.38);
+    --radius-selector: 0.25rem;
+    --radius-field: 0.25rem;
+    --radius-box: 0.25rem;
+    --size-selector: 0.1875rem;
+    --size-field: 0.1875rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 1;
+}
+html, body {
+    @apply bg-linear-to-b from-base-200 to-base-300 h-full
+}
+.loginpage, .new-password-page {
+    @apply h-full flex flex-col items-center justify-center
+}
+
+.loginpage .loginpage-body, .new-password-page .new-password-page-body {
+    @apply flex flex-col gap-4 items-center justify-center
+}
+
+.loginpage .loginpage-body .fieldset, .new-password-page .new-password-page-body .formcont {
+    @apply bg-base-100 p-4 rounded-sm
+}
+
+.new-password-page .new-password-page-body .formcont, .new-password-page .new-password-page-body .formcont form {
+    @apply flex flex-col gap-2
+}
+
+.extra-login-options-container {
+    @apply flex flex-col w-full gap-2 justify-end
+}
+
+.forgot-password {
+    @apply link py-1
+}
+
+.login-pass, .login-email {
+    @apply input input-neutral w-72
+}
+.login-form {
+    @apply flex flex-col gap-1
+}
+
+.loginpage-body .wordmark {
+    @apply w-36 self-center
+}
+
+h1 {
+    @apply text-3xl font-black
+}
+
+.outside_cont {
+    @apply w-48
+}
+
+.navcont {
+    @apply flex flex-row absolute justify-center w-full
+}
+
+#public-nav {
+    @apply flex flex-row gap-6 justify-self-center items-center bg-base-300 py-2 shadow-md shadow-base-300/50
+}
+
+#public-nav .navlink {
+    @apply link font-bold hover:bg-primary/50 border-transparent hover:border-primary/50 hover:border px-2 rounded-sm transition
+}
+
+.home-content {
+    @apply p-4 bg-base-100 flex flex-row gap-4 rounded-sm border border-base-content/10
+}
+
+.wordmarkcont {
+    @apply translate-y-1
+}
+
+.login-button {
+    @apply justify-self-end btn btn-accent float-right hover:border-primary-content/25
+}
+
+.select {
+    @apply text-wrap
+}

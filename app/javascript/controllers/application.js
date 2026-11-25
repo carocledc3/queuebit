@@ -7,3 +7,6 @@ application.debug = false
 window.Stimulus   = application
 
 export { application }
+document.getElementById('room_selected_id').on('change', function() {
+    alert("test");
+});
