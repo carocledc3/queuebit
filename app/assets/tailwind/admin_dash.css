@@ -1,0 +1,59 @@
+.dash-events-list {
+    @apply list
+}
+
+.dash-event-number {
+    @apply text-xl font-thin opacity-50 tabular-nums w-max
+}
+
+.dash-event-entry {
+    @apply items-center flex flex-row py-1
+}
+
+.dash-event-info {
+    @apply justify-center flex flex-col grow gap-0
+}
+
+.dash-sarf {
+    @apply text-base-content/50
+}
+
+.events-title-cont {
+    @apply flex flex-row gap-4 items-end mr-2
+}
+
+#dash_events_sort_value {
+    @apply select w-fit text-[0.8em] h-[2em]
+}
+
+.label {
+    @apply text-[0.8em] opacity-75
+}
+
+.dash-events-sort {
+    @apply flex flex-col gap-0
+}
+
+.pagination {
+    @apply join
+}
+
+.pagination *:not(span):not(.previous_page):not(.next_page) {
+    @apply btn btn-soft btn-neutral px-2
+}
+
+.pagination span {
+    @apply btn btn-soft btn-neutral px-2
+}
+
+.pagination .current {
+    @apply btn btn-primary
+}
+
+.pagination .previous_page, .pagination .next_page {
+    @apply btn-primary btn px-2
+}
+
+.pagination_cont {
+    @apply w-full flex flex-row justify-center
+}

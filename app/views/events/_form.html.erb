@@ -1,7 +1,8 @@
-<%= form_with model: event do |form| %>
+
+          <%= form_with model: event do |form| %>
   <% if event.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+    <div class="text-warning">
+      <div class="text-xl"><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</div>
 
       <ul>
         <% event.errors.each do |error| %>
@@ -42,11 +43,6 @@
   </div>
 
   <div>
-    <%= form.label :details, style: "display: block" %>
-    <%= form.file_field :details %>
-  </div>
-
-  <div>
     <%= form.label :description, style: "display: block" %>
     <%= form.textarea :description %>
   </div>
@@ -54,6 +50,11 @@
     <div>
     <%= form.label :sarf, "Upload SARF", style: "display: block" %>
     <%= form.file_field :sarf, accept: "application/pdf*" %>
+  </div>
+
+  <div>
+    <%= form.label :approved, style: "display: block" %>
+    <%= form.checkbox :approved %>
   </div>
 
   <%# NESTED FORM BELOW %>
@@ -68,4 +69,7 @@
   <div>
     <%= form.submit %>
   </div>
+
+
+
 <% end %>

@@ -25,5 +25,6 @@ module Queuebit
     # config.eager_load_paths << Rails.root.join("extras")
     config.time_zone = "Taipei"
     config.active_record.default_timezone = :local
+    config.beginning_of_week = :monday
   end
 end

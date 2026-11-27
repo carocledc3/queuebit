@@ -1,0 +1,43 @@
+<%= render template: "layouts/outside" %>
+<div class="w-5xl flex flex-col justify-center items-center mx-auto gap-2">
+    <span id="page-top"></span>
+    <div class="home-container flex flex-col my-16 gap-4">
+        <div class="home-content">
+            <h1 class="title">The Event Reservation Process</h1>
+            <p>Omnes itaque generationes ab Abraham usque ad David, generationes quatuordecim : et a David usque ad transmigrationem Babylonis, generationes quatuordecim : et a transmigratione Bayblonis usque ad Christum, generationes quatuordecim.</p>
+        </div>
+
+        <section id="what-are-events-for" class="home-content">
+            <h2 class="title">What are Events for?</h2>
+            <%= render partial: "pages/sarf_help/part_1" %>
+        </section>
+
+        <section id="how-to-propose-an-event" class="home-content">
+            <h2 class="title">How to Propose an Event</h2>
+            <%= render partial: "pages/sarf_help/part_2" %>
+        </section>
+
+        <section id="the-student-activity-request-form" class="home-content">
+            <h2 class="title">The Student Activity Request Form</h2>
+            <%= render partial: "pages/sarf_help/part_3" %>
+        </section>
+
+        <section id="the-offices-and-signatories" class="home-content">
+            <h2 class="title">The Offices and Signatories</h2>
+            <%= render partial: "pages/sarf_help/part_4" %>
+        </section>
+
+        <section id="the-signing-process" class="home-content">
+            <h2 class="title">The Signing Process</h2>
+            <%= render partial: "pages/sarf_help/part_5" %>
+        </section>
+
+        <section id="sample" class="home-content">
+            <h2 class="title">Sample</h2>
+            <%= render partial: "pages/sarf_help/part_6" %>
+        </section>
+
+        <%= render partial: "article_footer" %>
+    </div>
+
+</div>

@@ -1,0 +1,148 @@
+.home-content {
+    @apply p-8 bg-base-100/50 flex flex-col gap-4 rounded-sm border border-base-content/10
+}
+
+.wordmarkcont {
+    @apply translate-y-1
+}
+
+.login-button {
+    @apply justify-self-end btn btn-accent hover:border-base-content/10
+}
+
+.select {
+    white-space: normal;
+    @apply min-w-32 max-w-sm w-auto overflow-auto text-wrap
+}
+
+select {
+    white-space: normal;
+    @apply text-wrap
+}
+
+#event-filter {
+    @apply flex flex-row gap-4
+}
+
+#room-selector {
+    @apply w-32
+}
+
+#org-selector {
+    @apply w-max
+}
+
+.year-display {
+    @apply text-2xl font-black
+}
+
+.week-number {
+    @apply font-black
+}
+
+.wd-header-1 {
+    @apply bg-blue-500/20
+}
+
+.wd-header-2 {
+    @apply bg-red-500/20
+}
+
+.wd-header-3 {
+    @apply bg-green-500/20
+}
+
+.wd-header-4 {
+    @apply bg-yellow-500/20
+}
+
+.wd-header-5 {
+    @apply bg-cyan-500/20
+}
+
+.wd-header-6 {
+    @apply bg-fuchsia-500/20
+}
+
+.wd-header-0 {
+    @apply bg-gray-300/20
+}
+
+.calendar-body {
+    @apply border border-base-content/10 rounded-sm
+}
+
+td.day {
+    @apply bg-base-300/50 text-center w-1/7 py-1 px-1
+}
+
+.daycont {
+    @apply flex flex-row justify-center gap-2 items-center
+}
+
+
+
+.wd-header {
+    @apply text-center text-lg p-0
+}
+
+.day-num {
+    @apply text-2xl font-black
+}
+
+td.day, .wd-header {
+    @apply border border-base-content/10 w-1/7
+}
+
+.resv-event-title {
+    @apply font-bold
+}
+
+.empty {
+    @apply italic text-base-content/50 text-[0.75em]
+}
+
+.resv-room {
+    @apply italic text-base-content/75
+}
+
+.resv-timespan {
+    @apply text-[0.8em]
+}
+
+.resv-row {
+    @apply h-64
+}
+.resv-cell {
+    @apply bg-base-200/50!
+}
+
+.today {
+    @apply bg-base-content/5!;
+}
+
+.day-resv {
+    @apply flex flex-col text-left border border-base-content/10 rounded-sm p-2 bg-base-100/50!
+}
+
+.title {
+    @apply self-start
+}
+
+.calendar-title-cont {
+    @apply flex flex-row items-center gap-4
+}
+
+.calendar-title a span.material-symbols-outlined.nav-chevrons {
+    @apply translate-y-0.5
+}
+
+.resv-status { @apply text-[0.8em] italic }
+.resv-org { @apply text-[0.8em] italic font-bold }
+.resv-status .pending { @apply text-warning }
+.resv-status .approved { @apply text-success }
+.resv-status * .material-symbols-outlined { @apply translate-y-0.5 }
+
+.simple-calendar {
+    @apply flex flex-col gap-4
+}

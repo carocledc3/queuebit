@@ -1,0 +1,22 @@
+<div class="navcont">
+    <nav id="admin-nav">
+        <div class="linkscont">
+            <div class="wordmarkcont">
+                <%= render partial: "pages/wordmarks/admin", locals: {option_class: "w-30"} %>
+            </div>
+            <%= link_to "Dashboard", :dashboard, class: "navlink" %>
+            <%= link_to "Records", :aboot, class: "navlink" %>
+            <%= link_to "Analytics", :analytics, class: "navlink" %>
+        </div>
+        <div class="actionscont">
+            <span class="current-email"><%= Current.user.email_address %></span>
+            <%= button_to logout_path, method: :get, class: "btn btn-error" do %>
+                <span class='material-symbols-outlined'>logout</span>
+                Logout
+            <% end %>
+        </div>
+        <%#= button_to new_session_path, method: :get, class: "login-button" do %>
+            <%# <span class='material-symbols-outlined'>login</span> Admin Login %>
+        <%# end %> 
+    </nav>
+</div>

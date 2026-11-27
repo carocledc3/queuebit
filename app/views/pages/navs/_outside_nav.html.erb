@@ -1,0 +1,18 @@
+<div class="navcont">
+    <nav id="public-nav">
+        <div class="linkscont">
+            <div class="wordmarkcont">
+            <%= render partial: "pages/wordmarks/public", locals: {option_class: "w-30"} %>
+        </div>
+        <%= link_to "UC Main Page", "https://uc-bcf.edu.ph", class: "navlink" %>
+        <%= link_to "About Queuebit", :aboot, class: "navlink" %>
+        <%= link_to "The Event Process", :sarf, class: "navlink" %>
+        </div>
+        <div class="actionscont">
+            <%= button_to new_session_path, method: :get, class: "login-button" do %>
+            <span class='material-symbols-outlined'>login</span>
+            Admin Login
+        <% end %> 
+        </div>
+    </nav>
+</div>

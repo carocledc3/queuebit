@@ -1,25 +1,37 @@
-<div class="simple-calendar">
+<div id="calendar" class="simple-calendar">
   <div class="calendar-heading">
-    <span class="calendar-title">
-      <%= t('simple_calendar.week', default: 'Week') %>
-      <%= calendar.week_number %> <%= calendar.start_date.year %>
-      <% if calendar.number_of_weeks > 1 %>
-        - <%= calendar.end_week %>
-      <% end %>
+    <div class="calendar-title-cont">
+      <span class="year-display">
+      <%= calendar.start_date.year %>
     </span>
+      <nav class="calendar-title">
+        <%= link_to calendar.url_for_previous_view, remote: true do %>
+          <span class="material-symbols-outlined nav-chevrons">chevron_left</span>
+        <% end %>
+        <%= t('simple_calendar.week', default: 'Week') %>
+        <span class="week-number"><%= calendar.week_number %> </span>
+        <% if calendar.number_of_weeks > 1 %>
+          - <%= calendar.end_week %>
+        <% end %>
+        <%= link_to calendar.url_for_next_view, remote: true do %>
+          <span class="material-symbols-outlined nav-chevrons">chevron_right</span>
+        <% end %>
+        <%= link_to calendar.url_for_today_view, remote: true, class: "btn btn-accent" do %>
+          <span class="material-symbols-outlined">today</span>
+          <%= t('simple_calendar.today', default: 'Today') %>
+        <% end %>
+      </nav>
 
-    <nav>
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
-    </nav>
+    </div>
   </div>
 
-  <table class="table table-striped">
+  <table class="table table-striped calendar-body">
     <thead>
       <tr>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <%= content_tag :th, class: "wd-header wd-header-#{day.wday}" do %>
+            <%= t('date.abbr_day_names')[day.wday] %>
+          <% end %>
         <% end %>
       </tr>
     </thead>
@@ -29,7 +41,45 @@
         <tr>
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
-              <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
+              <div class="daycont">
+                    <span class="day-num"><%= day.to_fs(:day_num) + " " %></span>
+                    <span class="day-month"><%= day.to_fs(:month_short) + " " %></span>
+                </div>
+            <% end %>
+          <% end %>
+        </tr>
+        <tr class="resv-row">
+          <% week.each do |day| %>
+            <%= content_tag :td, class: calendar.td_classes_for(day).push("resv-cell") do %>
+              <% unless calendar.sorted_events_for(day).empty? %>
+                <ul class="resv-cont">
+                  <% calendar.sorted_events_for(day).each do |resv| %>
+                  <li class="day-resv">
+                      <span class="resv-event-title"><%= resv.event.name %></span>
+                      <span class="resv-room"><%= resv.room.name %></span>
+                      <span class="resv-org"><%= resv.event.organisation.abbreviation %></span>
+                      <span class="resv-timespan"><%= resv.reservation_start.to_fs(:time) %> - <%= resv.reservation_end.to_fs(:time) %></span>
+                      <span class="resv-status">
+                        <% if resv.approved? %>
+                          <span class="approved">
+                            <span class="material-symbols-outlined">check_box</span> Approved
+                          </span>
+                        <% else %>
+                        <span class="pending">
+                          <span class="material-symbols-outlined">hourglass</span> Pending
+                        </span>
+                        <% end %>
+                      </span>
+
+                  </li>
+                <% end %>
+                </ul>
+                
+              <% else %>
+                <div class="day-resvs empty">
+                      No reservations for this day
+                  </div>
+              <% end %>
             <% end %>
           <% end %>
         </tr>

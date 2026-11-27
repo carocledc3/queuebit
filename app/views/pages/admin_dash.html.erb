@@ -1,1 +1,41 @@
-<%= render template: 'layouts/inside' %>
+<%= render template: 'layouts/inside', locals: {noncolumn: true} %>
+<div class="w-5xl flex flex-row justify-center items-center mx-auto gap-2">
+    <div class="home-container flex flex-row gap-4 -my-4 w-full">
+        <div class="home-content events-list-cont w-5/8">
+            <div class="events-title-cont">
+                <h1>Events</h1>
+                <div class="dash-events-sort field grow">
+                    <%= label_tag :sort, "Sort", class: "label" %>
+                    <%= select_tag :dash_events_sort_value, options_for_select([["Name", "event_name"], ["Organisation", "event_org"], ["Event Date", "event_date"]]) %>
+                </div>
+                <%= link_to "Add Event", new_event_path, class: "btn btn-primary" %>
+            </div>
+            <div class="dash-events-list w-full">
+                <% @events.each do |event| %>
+                    <div class="dash-event-entry list-row">
+                        <div class="dash-event-number"><%= "%02d" % [event.id] %></div>
+                        <div class="dash-event-info">
+                            <div class="event-entry-first-row">
+                                <%= content_tag :strong, event.name, class: "dash-event-name" %>
+                                <%= content_tag :i, event.sarf_ctrl, class: "dash-sarf" %>
+                            </div>
+                            <div class="event-entry-second-row">
+                                <%= content_tag :span, event.organisation.abbreviation, class: "dash-event-name" %> • 
+                                <%= content_tag :span, event.start_date.strftime("%e %b"), class: "dash-event-name" %>
+                            </div>
+                        </div>
+                        <%= link_to "Show", event_path(event.id, from_dash: true), class: "btn btn-neutral" %>
+                        
+                    </div>
+                <% end %>
+            </div>
+            <div class="pagination_cont">
+                <%= will_paginate @events, :inner_window => 1, :outer_window => 0 %>
+            </div>
+        </div>
+
+        <div class="home-content analytics-preview-cont w-3/8">
+            <h1>Analytics</h1>
+            
+    </div>
+</div>

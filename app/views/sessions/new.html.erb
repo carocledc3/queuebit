@@ -7,16 +7,24 @@
   <%= form_with class: "fieldset", url: session_path do |form| %>
 
   <h1>Login</h1>
-
+  
+  <div class="field emailcont">
     <%= form.label :email_address, "E-mail address", class: "label" %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "login-email" %>
-
+    <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "login-email" %>
+  </div>
+    
+<div class="field passcont">
     <%= form.label :password, "Password", class: "label" %>
     <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72, class: "login-pass" %>
+</div>
+    
 
   <div class="extra-login-options-container">
   <%= link_to "Forgot password?", new_password_path, {class: "forgot-password"} %>
     <%= form.submit "Sign in", {class: "btn btn-accent sign-in"} %>
+    <%= link_to root_path, class: "btn btn-neutral" do %>
+                Back to Home
+            <% end %>
   </div>
   
 <% end %>

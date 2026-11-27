@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_24_174133) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_26_235944) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -86,13 +86,39 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_174133) do
     t.string "name"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.json "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "employee_id", null: false
     t.integer "organisation_id", null: false
     t.integer "event_type_id", null: false
     t.text "description"
+    t.boolean "approved", default: false
+    t.string "sarf_ctrl", default: "000-0000"
+    t.boolean "is_on_campus", default: false
+    t.boolean "is_uc_public", default: false
+    t.boolean "allows_outsiders", default: false
+    t.text "remarks", default: ""
+    t.string "budget_source", default: ""
+    t.float "budget_estimate", default: 0.0
+    t.boolean "has_loi_or_moa", default: false
+    t.boolean "has_speaker_or_facilitator_cv", default: false
+    t.boolean "has_organising_committee_doc", default: false
+    t.boolean "has_resolution", default: false
+    t.boolean "has_brf", default: false
+    t.boolean "has_excuse_letter", default: false
+    t.boolean "has_programme", default: false
+    t.boolean "has_promo_materials", default: false
+    t.boolean "has_participant_list", default: false
+    t.boolean "has_venue_floor_plan", default: false
+    t.boolean "has_curfew_form", default: false
+    t.boolean "needs_bmo_support", default: false
+    t.text "bmo_support_details", default: ""
+    t.boolean "needs_lmo_support", default: false
+    t.text "lmo_support_details", default: ""
+    t.boolean "needs_itss_support", default: false
+    t.text "itss_support_details", default: ""
+    t.boolean "needs_admin_support", default: false
+    t.text "admin_support_details", default: ""
     t.index ["employee_id"], name: "index_events_on_employee_id"
     t.index ["event_type_id"], name: "index_events_on_event_type_id"
     t.index ["organisation_id"], name: "index_events_on_organisation_id"
@@ -117,6 +143,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_24_174133) do
     t.integer "event_id", null: false
     t.integer "room_id", null: false
     t.string "name"
+    t.boolean "approved", default: false
     t.index ["event_id"], name: "index_reservations_on_event_id"
     t.index ["room_id"], name: "index_reservations_on_room_id"
   end

@@ -1,3 +1,4 @@
+<%= render template: 'layouts/inside' %>
 <p style="color: green"><%= notice %></p>
 
 <%= render @event %>
@@ -7,6 +8,7 @@
     <%= link_to "View Attached SARF", rails_blob_path(@event.sarf), target: "_blank" %>
   <% end %>
   <%= link_to "Edit this event", edit_event_path(@event) %>
-  <%= link_to "Back to events", events_path %>
-  <%= button_to "Destroy this event", @event, method: :delete %>
+  <%= link_to :from_dash ? "Back to Dashboard" : (:from_records ? "Back to Dashboards" : "Back to Events"),
+              :from_dash ? dashboard_path : (:from_records ? records_path : events_path) %>
+  <%= button_to "Destroy this event", @event, method: :delete, class: "btn btn-error" %>
 </div>

@@ -35,6 +35,11 @@
     <%= form.collection_select :event_id, Event.all, :id, :name %>
   </div>
 
+  <div>
+    <%= form.label :approved, style: "display: block" %>
+    <%= form.checkbox :approved %>
+  </div>
+
   
   </div>
   

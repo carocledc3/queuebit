@@ -1,0 +1,7 @@
+#admin-nav {
+    @apply flex flex-row gap-6 justify-self-center items-center w-2/3
+}
+
+#admin-nav .navlink {
+    @apply link font-bold hover:bg-primary/50 border-transparent hover:border-primary/50 hover:border px-2 rounded-sm transition
+}

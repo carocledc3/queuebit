@@ -1,36 +1,51 @@
 <%= render template: "layouts/outside" %>
-<div class="w-2/3 flex flex-col justify-center items-center h-full mx-auto gap-2">
-    <div class="home-content">
-    <div class="room-changer">
-        <%= form_with(model: Room, id: "room_selector") do |form| %>
-        <%= form.label "Room", style: "display: block", class: "label" %>
-        <div class="select">
-            <%= form.collection_select "selected_id", Room.where.not(room_type_id: 16).or(Room.where.not(room_type_id: 15)), :id, :name, :onChange => tabarnak%>
-        </div>
 
-        <%= form.label "Organisation", style: "display: block", class: "label" %>
-        <div class="select">
-            <%= form.collection_select "organisation_id", Organisation.all, :id, :name, :onChange => tabarnak%>
+<div class="w-5xl flex flex-col justify-center items-center mx-auto gap-2">
+    <div class="home-container flex flex-col my-16 gap-4">
+        <div class="home-content">
+            <h1 class="title">About Queuebit</h1>
+            <p>QueueBit is a tool developed by the UC Campus Management Office to help CMO staff manage and keep track of events and the rooms they reserve, and for student-organisers to know which rooms are reserved when before they file their Student Activity Request Forms (SARFs).</p>
+            <%= link_to aboot_path, class: "btn btn-accent self-end" do %>
+                <span class="material-symbols-outlined">info</span> Learn More...
+            <% end %>
         </div>
+    <div class="reservations-view">
+    </div>
+    <div class="home-content">
+    <h1 class="title" >Events</h1>
+    <div class="room-changer">
+        <%= form_with(model: Room, id: "event-filter") do |form| %>
+        <div class="room-changer-option" id="room-selector">
+            <%= form.label "Room", style: "display: block", class: "label" %>
+            <div class="select">
+                <%= form.collection_select "selected_id", Room.where.not(room_type_id: 16).or(Room.where.not(room_type_id: 15)), :id, :name, :onChange => tabarnak%>
+            </div>
+        </div>
+        <div class="room-changer-option" id="org'-selector">
+            <%= form.label "Organisation", style: "display: block", class: "label" %>
+            <div class="select">
+                <%= form.collection_select "organisation_id", Organisation.all, :id, :name, :prompt => "[Any]", :onChange => tabarnak%>
+            </div>
+        </div>
+        
     <% end %>
     </div>
-    <div class="calendar-view">
-        <%= turbo_frame_tag 'calendar' do %>
-                <%= week_calendar(events: @resv_list) do |date, resvs| %>
-                <div class="day">
-                    <%= date.to_fs(:short) %>
-                </div>
-                <% resvs.each do |resv| %>
-                    <div>
-                        <%= resv.event.name %> 
-                        <%= resv.reservation_start.to_fs(:time) %>
-                    </div>
-                <% end %>
-            <% end %>
+    <div id="calendar" class="calendar-view">
+        <%= week_calendar(events: @resv_list) do |date, resvs| %>
         <% end %>
         
     </div>
-</div>
+    </div>
+
+    <div class="home-content">
+            <h1 class="title">How does one reserve an Event?</h1>
+            <p>Did you ever hear the tragedy of the Student Activity Request Form? It's not a story UC will teach you. It's a Student Org legend.</p>
+            <%= link_to sarf_path, class: "btn btn-accent self-end" do %>
+                <span class="material-symbols-outlined">info</span> About the SARF
+            <% end %>
+        </div>
+
+    </div>
 </div>
 
 

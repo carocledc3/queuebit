@@ -1,9 +1,18 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import "./about.css";
+@import "./admin_common.css";
+@import "./admin_dash.css";
+@import "./analytics.css";
+@import "./home.css";
+@import "./internals.css";
+@import "./records_dash.css";
+@import "./sarf_help.css";
+
 @source not "./daisyui{,*}.mjs";
 
 * {
-    font-family: "JetBrains Mono", monospace, system-ui !important;
+    font-family: "JetBrains Mono", "Iosevka SS14", monospace, system-ui !important;
 }
 
 .material-symbols-outlined {
@@ -12,7 +21,7 @@
     'FILL' 1,
     'wght' 700,
     'GRAD' 0,
-    'opsz' 24
+    'opsz' 24;
 }
 
 @plugin "./daisyui.mjs" {
@@ -65,11 +74,11 @@
     --color-base-200: oklch(22.1% 0.062 267.935);
     --color-base-300: oklch(14.7% 0.064 267.935);
     --color-base-content: oklch(95% 0.026 236.824);
-    --color-primary: oklch(54% 0.245 262.881);
+    --color-primary: oklch(62% 0.214 259.815);
     --color-primary-content: oklch(97% 0.013 236.62);
     --color-secondary: oklch(58% 0.158 241.966);
     --color-secondary-content: oklch(98% 0.019 200.873);
-    --color-accent: oklch(54% 0.245 262.881);
+    --color-accent: oklch(62% 0.214 259.815);
     --color-accent-content: oklch(97% 0.013 236.62);
     --color-neutral: oklch(97% 0.014 254.604);
     --color-neutral-content: oklch(28% 0.091 267.935);
@@ -91,10 +100,10 @@
     --noise: 1;
 }
 html, body {
-    @apply bg-linear-to-b from-base-200 to-base-300 h-full
+    @apply bg-linear-to-b from-base-200 to-base-300 h-full bg-fixed
 }
 .loginpage, .new-password-page {
-    @apply h-full flex flex-col items-center justify-center
+    @apply h-full flex flex-col items-center justify-center p-8
 }
 
 .loginpage .loginpage-body, .new-password-page .new-password-page-body {
@@ -102,7 +111,7 @@ html, body {
 }
 
 .loginpage .loginpage-body .fieldset, .new-password-page .new-password-page-body .formcont {
-    @apply bg-base-100 p-4 rounded-sm
+    @apply bg-base-100/50 p-8 rounded-sm border border-base-content/10 flex flex-col gap-4
 }
 
 .new-password-page .new-password-page-body .formcont, .new-password-page .new-password-page-body .formcont form {
@@ -125,41 +134,38 @@ html, body {
 }
 
 .loginpage-body .wordmark {
-    @apply w-36 self-center
+    @apply w-36 self-start
 }
 
 h1 {
-    @apply text-3xl font-black
+    @apply text-3xl font-black text-shadow-accent/50 text-shadow-lg
 }
 
-.outside_cont {
-    @apply w-48
+h2 {
+    @apply text-2xl font-extrabold
 }
 
 .navcont {
-    @apply flex flex-row absolute justify-center w-full
+    @apply flex flex-row fixed w-full justify-center bg-base-300 py-2 shadow-md shadow-base-300/50 border-b border-base-content/10
 }
 
 #public-nav {
-    @apply flex flex-row gap-6 justify-self-center items-center bg-base-300 py-2 shadow-md shadow-base-300/50
+    @apply flex flex-row w-5xl items-center gap-4 justify-stretch
 }
 
 #public-nav .navlink {
     @apply link font-bold hover:bg-primary/50 border-transparent hover:border-primary/50 hover:border px-2 rounded-sm transition
 }
 
-.home-content {
-    @apply p-4 bg-base-100 flex flex-row gap-4 rounded-sm border border-base-content/10
+.field {
+    @apply flex flex-col gap-1
 }
-
-.wordmarkcont {
-    @apply translate-y-1
+.linkscont {
+    @apply flex flex-row items-center justify-stretch gap-4 w-full
 }
-
-.login-button {
-    @apply justify-self-end btn btn-accent float-right hover:border-primary-content/25
+.actionscont {
+    @apply w-50 justify-end flex flex-row gap-4 items-center
 }
-
-.select {
-    @apply text-wrap
+.current-email {
+    @apply text-[0.8em]
 }
